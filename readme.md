@@ -38,6 +38,8 @@ To keep the NTP loading quick, only images up to a certain size are used, and th
 
 **Other:** Set the script up as a service (see [here](https://hackernoon.com/making-node-js-service-always-alive-on-ubuntu-server-e20c9c0808e4) or [here](https://stackoverflow.com/questions/4018154/how-do-i-run-a-node-js-app-as-a-background-service)) or run it via [pm2](https://github.com/Unitech/pm2) or similar.
 
+Run node with `--harmony`. Wallpaper dir set in config.
+
 ## Credits
 
 Illustrations shown in above gif:
