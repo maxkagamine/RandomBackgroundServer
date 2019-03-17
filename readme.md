@@ -1,5 +1,7 @@
 # Random Background Server
 
+[![](https://img.shields.io/badge/build-none-brightgreen.svg)](https://youtu.be/CjPmYSYeTDQ)
+
 This is a **quickly-thrown-together** zero-dependency node server with a single endpoint, /random, which returns a random wallpaper image from a local directory on every request.
 
 The motivation for this is the lack of any Chrome new tab page extension that allows for multiple custom background images from a folder, all of them instead supporting at most one custom image or serving its own lame daily pics of trees and crap.
@@ -25,6 +27,59 @@ body::before {
   bottom: 0;
   z-index: -10000;
   pointer-events: none;
+}
+```
+</details>
+</p>
+
+If you want to get real fancy, you can have it so hovering over the options button fades out the overlay and links to reveal the background in all its glory (only applicable to the Humble extension):
+
+<p>
+<details>
+<summary>Fancier NTP custom css</summary>
+
+```css
+/*
+Hiding the links requires moving the #options_button above #main:
+
+code $(Get-ChildItem $env:LocalAppData\Google\Chrome\User` Data\Default\Extensions\mfgdmpfihlmdekaclngibpjhdebndhdj\*\newtab.html)
+*/
+
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+#options_button {
+  z-index: -10000;
+  opacity: 1 !important;
+}
+
+#options_button::before {
+  content: ' ';
+  background: rgba(0, 0, 0, 0.33);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10000;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+#main {
+  transition: opacity 1s;
+}
+
+#options_button:hover::before {
+  opacity: 0;
+  transition: opacity 1s 400ms ease-in-out;
+}
+
+#options_button:hover + #main {
+  opacity: 0;
+  transition: opacity 1s 400ms;
 }
 ```
 </details>
